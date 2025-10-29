@@ -56,7 +56,7 @@ function TutorCard({ tutor }: { tutor: Tutor }) {
   );
 }
 
-export default function FindTutorSection() {
+export default function JoinAsTutorSection() {
   const [filters, setFilters] = useState({
     class: 'All',
     subject: 'All',
@@ -114,7 +114,7 @@ export default function FindTutorSection() {
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-                Find Your Perfect Tutor
+                Join As Tutor
             </h2>
             <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
                 Filter our expert tutors to find the perfect match for your needs.
