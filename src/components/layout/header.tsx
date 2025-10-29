@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full text-white transition-transform duration-300',
+        'absolute top-0 z-50 w-full text-white transition-transform duration-300',
         !isVisible && '-translate-y-full'
       )}
     >
@@ -67,7 +67,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-base font-medium transition-colors hover:text-gray-300"
+              className="text-lg font-bold transition-colors hover:text-gray-300"
             >
               {link.label}
             </Link>
@@ -88,7 +88,7 @@ export default function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] border-l-0 bg-black/70 text-white backdrop-blur-lg sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] border-l-0 bg-black/80 text-white backdrop-blur-lg sm:w-[400px]">
               <div className="flex h-full flex-col gap-8 p-6">
                 <Link href="#home" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image

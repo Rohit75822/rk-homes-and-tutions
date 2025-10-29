@@ -6,7 +6,7 @@ import { UsersRound, Award, TrendingUp, MessageCircle } from 'lucide-react';
 
 export default function HeroSection() {
   return (
-    <section id="home" className="relative w-full overflow-hidden">
+    <section id="home" className="relative h-screen w-full overflow-hidden">
       <Image
         src="https://i.pinimg.com/originals/00/9c/3d/009c3da8d5df425d6271c7d702b1d529.gif"
         alt="Hero background"
@@ -16,7 +16,7 @@ export default function HeroSection() {
         unoptimized
       />
       <div className="absolute inset-0 bg-black/50 z-10" />
-      <div className="container relative z-20 mx-auto grid min-h-[calc(100vh-80px)] grid-cols-1 items-center gap-8 px-4 py-12 md:gap-16 md:px-6">
+      <div className="container relative z-20 mx-auto grid h-full grid-cols-1 items-center gap-8 px-4 py-12 md:gap-16 md:px-6">
         <div className="space-y-6 text-center text-white">
           <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl">
             Welcome to Hyderabad's No.1 Home & Online Tuitions
