@@ -1,4 +1,6 @@
-import { notFound } from "next/navigation";
+"use client";
+
+import { notFound, useRouter } from "next/navigation";
 import Image from 'next/image';
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
@@ -7,10 +9,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { CheckCircle, Star, User, BookOpen } from "lucide-react";
+import { CheckCircle, Star, User, BookOpen, ArrowLeft } from "lucide-react";
 import ContactSection from "@/components/sections/contact";
 
 export default function ClassDetailPage({ params }: { params: { slug: string } }) {
+  const router = useRouter();
   const classInfo = classesData.find((c) => c.slug === params.slug);
 
   if (!classInfo) {
@@ -25,6 +28,10 @@ export default function ClassDetailPage({ params }: { params: { slug: string } }
       <main className="flex-grow pt-20">
         <section className="bg-secondary/30 py-16 md:py-24">
           <div className="container mx-auto px-4 md:px-6">
+            <Button variant="outline" onClick={() => router.back()} className="mb-8">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              Back to Classes
+            </Button>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
               <div className="md:col-span-2">
                 <div className="flex items-center gap-4 mb-4">
