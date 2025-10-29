@@ -176,9 +176,9 @@ export default function FindTutorSection() {
                 )
               ) : (
                 <div className="text-center py-16 h-full flex flex-col justify-center items-center">
-                    <Search className="h-16 w-16 text-muted-foreground/50 mb-4" />
-                    <h3 className="text-2xl font-semibold">Select filters to find a tutor</h3>
-                    <p className="text-muted-foreground mt-2">Your perfect tutor is just a few clicks away.</p>
+                    <Search className="h-12 w-12 md:h-16 md:w-16 text-muted-foreground/50 mb-4" />
+                    <h3 className="text-xl md:text-2xl font-semibold">Select filters to find a tutor</h3>
+                    <p className="text-muted-foreground mt-2 text-sm md:text-base">Your perfect tutor is just a few clicks away.</p>
                 </div>
               )}
             </div>
