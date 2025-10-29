@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
-import { BookOpen, GraduationCap, Target, Check, BrainCircuit, Atom, Flask, Dna, Languages, BookText, Globe, Laptop, Briefcase, BarChart2 } from "lucide-react";
+import { BookOpen, GraduationCap, Target, Check, BrainCircuit, Atom, FlaskConical, Dna, Languages, BookText, Globe, Laptop, Briefcase, BarChart2 } from "lucide-react";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 
@@ -48,7 +48,7 @@ const subjects = [
         description: "Explore the laws of the universe. We cover mechanics, electricity, magnetism, and modern physics with a focus on conceptual clarity and application.",
     },
     {
-        icon: Flask,
+        icon: FlaskConical,
         title: "Chemistry",
         description: "Dive into the world of molecules and reactions. Our sessions cover organic, inorganic, and physical chemistry, making complex topics easy to digest.",
     },
