@@ -12,6 +12,7 @@ const navLinks = [
   { href: '#home', label: 'Home' },
   { href: '#about', label: 'About Us' },
   { href: '#services', label: 'Services' },
+  { href: '#classes', label: 'Classes' },
   { href: '#reviews', label: 'Reviews' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -33,15 +34,16 @@ export default function Header() {
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
-        setIsScrolled(window.scrollY > 10);
+        const currentScrollY = window.scrollY;
+        setIsScrolled(currentScrollY > 10);
         
-        if (window.scrollY > lastScrollY && window.scrollY > 80) { // if scroll down hide the navbar
+        if (currentScrollY > lastScrollY && currentScrollY > 80) { // if scroll down hide the navbar
           setIsVisible(false);
           setIsMobileMenuOpen(false); // Close mobile menu on scroll
         } else { // if scroll up show the navbar
           setIsVisible(true);
         }
-        setLastScrollY(window.scrollY);
+        setLastScrollY(currentScrollY);
       }
     };
 
@@ -66,14 +68,16 @@ export default function Header() {
       { rootMargin: '-50% 0px -50% 0px' }
     );
 
-    navLinks.forEach((link) => {
-      const element = document.querySelector(link.href);
-      if (element) {
-        observer.observe(element);
-      }
+    const elements = navLinks.map(link => document.querySelector(link.href)).filter(el => el);
+    elements.forEach((element) => {
+      if(element) observer.observe(element);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      elements.forEach((element) => {
+        if(element) observer.unobserve(element);
+      });
+    };
   }, []);
 
   const updatePills = () => {
