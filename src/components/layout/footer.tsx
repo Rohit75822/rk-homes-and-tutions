@@ -40,8 +40,8 @@ export default function Footer() {
           <div>
             <h3 className="mb-4 font-semibold">Contact Info</h3>
             <ul className="space-y-2 text-sm">
-              <li className="flex items-center gap-2 text-muted-foreground"><Phone size={16} /> +91 98765 43210</li>
-              <li className="flex items-center gap-2 text-muted-foreground"><Mail size={16} /> info@rktutors.com</li>
+              <li className="flex items-center gap-2 text-muted-foreground"><Phone size={16} /> +91 9494823941</li>
+              <li className="flex items-center gap-2 text-muted-foreground"><Mail size={16} /> rkhometutions@gmail.com</li>
               <li className="flex items-center gap-2 text-muted-foreground"><MapPin size={16} /> Hyderabad, Telangana</li>
               <li className="flex items-center gap-2 text-muted-foreground">24/7 Support</li>
             </ul>

@@ -15,7 +15,7 @@ export default function HeroSection() {
         className="z-0"
         unoptimized
       />
-      <div className="absolute inset-0 bg-black/50 z-10" />
+      <div className="absolute inset-0 bg-black/60 z-10" />
       <div className="container relative z-20 mx-auto grid h-full grid-cols-1 items-center gap-8 px-4 py-12 md:gap-16 md:px-6">
         <div className="space-y-6 text-center text-white">
           <h1 className="text-4xl font-extrabold tracking-tighter sm:text-5xl md:text-6xl">
