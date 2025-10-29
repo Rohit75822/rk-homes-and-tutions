@@ -106,15 +106,15 @@ export default function ServicesSection() {
                 <div className="mb-2 rounded-full bg-primary/10 p-2 md:p-4">
                   <service.icon className="h-6 w-6 md:h-10 md:w-10 text-primary" />
                 </div>
-                <CardTitle className="text-base md:text-2xl">{service.title}</CardTitle>
-                <CardDescription className="text-xs md:text-sm">{service.description}</CardDescription>
+                <CardTitle className="text-sm md:text-2xl">{service.title}</CardTitle>
+                <CardDescription className="text-[10px] leading-tight md:text-sm">{service.description}</CardDescription>
               </CardHeader>
               <CardContent className="flex-grow p-2 md:p-6 pt-0">
-                <ul className="space-y-1 md:space-y-3 text-xs md:text-base">
+                <ul className="space-y-1 md:space-y-3">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-2 md:gap-3">
-                      <Check className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
-                      <span>{feature}</span>
+                    <li key={i} className="flex items-start gap-1.5 md:gap-3">
+                      <Check className="mt-0.5 h-3 w-3 flex-shrink-0 text-primary md:mt-1 md:h-4 md:w-4" />
+                      <span className="text-[10px] leading-tight md:text-base">{feature}</span>
                     </li>
                   ))}
                 </ul>
