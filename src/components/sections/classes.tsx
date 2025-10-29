@@ -3,6 +3,13 @@ import Link from "next/link";
 import { classesData } from "@/lib/classes-data";
 import { cn } from "@/lib/utils";
 
+const cardGradients = [
+  "from-[#fed1c7] to-[#fe8dc6]", // New gradient for "Classes 1-10"
+  "from-purple-100 to-indigo-100",
+  "from-green-100 to-cyan-100",
+  "from-amber-100 to-yellow-100",
+];
+
 
 export default function ClassesSection() {
   return (
@@ -18,18 +25,19 @@ export default function ClassesSection() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {classesData.map((classItem) => (
+          {classesData.map((classItem, index) => (
             <Link key={classItem.slug} href={`/classes/${classItem.slug}`} className="group">
               <Card className={cn(
                 "parallax-card flex h-full flex-col justify-center text-center transition-all",
-                "bg-gradient-to-br from-card/90 to-background backdrop-blur-sm"
+                "bg-gradient-to-br backdrop-blur-sm",
+                cardGradients[index % cardGradients.length]
               )}>
                 <CardHeader className="items-center">
-                  <div className="mb-4 rounded-full bg-primary/10 p-4">
+                  <div className="mb-4 rounded-full bg-white/30 p-4">
                     <classItem.icon className="h-10 w-10 text-primary" />
                   </div>
                   <CardTitle className="text-2xl">{classItem.title}</CardTitle>
-                  <CardDescription>{classItem.shortDescription}</CardDescription>
+                  <CardDescription className="text-card-foreground/80">{classItem.shortDescription}</CardDescription>
                 </CardHeader>
               </Card>
             </Link>
