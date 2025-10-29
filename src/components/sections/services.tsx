@@ -1,7 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { BookOpen, GraduationCap, Target, Check, BrainCircuit, Atom, FlaskConical, Dna, Languages, BookText, Globe, Laptop, Briefcase, BarChart2 } from "lucide-react";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-
 
 const services = [
   {
@@ -40,52 +38,52 @@ const subjects = [
     {
         icon: BrainCircuit,
         title: "Mathematics",
-        description: "From basic arithmetic to advanced calculus, our tutors build strong problem-solving skills and a deep understanding of mathematical concepts.",
+        description: "From basic arithmetic to advanced calculus, building strong problem-solving skills.",
     },
     {
         icon: Atom,
         title: "Physics",
-        description: "Explore the laws of the universe. We cover mechanics, electricity, magnetism, and modern physics with a focus on conceptual clarity and application.",
+        description: "Covering mechanics, electricity, magnetism, and modern physics with conceptual clarity.",
     },
     {
         icon: FlaskConical,
         title: "Chemistry",
-        description: "Dive into the world of molecules and reactions. Our sessions cover organic, inorganic, and physical chemistry, making complex topics easy to digest.",
+        description: "Organic, inorganic, and physical chemistry, making complex topics easy to digest.",
     },
     {
         icon: Dna,
         title: "Biology",
-        description: "Uncover the secrets of life. We offer comprehensive tutoring in botany, zoology, and human physiology, crucial for both board exams and NEET.",
+        description: "Comprehensive tutoring in botany, zoology, and human physiology for exams.",
     },
     {
         icon: Languages,
         title: "English",
-        description: "Master the global language. We focus on grammar, literature, comprehension, and creative writing to improve fluency and communication skills.",
+        description: "Focus on grammar, literature, comprehension, and creative writing skills.",
     },
     {
         icon: BookText,
         title: "Hindi",
-        description: "Strengthen your command of the national language with a focus on grammar, literature, and conversational skills for all academic levels.",
+        description: "Strengthen command of the language with focus on grammar, literature, and conversation.",
     },
     {
         icon: Globe,
         title: "Social Studies",
-        description: "Understand the world around you. Our tutors make history, geography, civics, and economics engaging and relevant.",
+        description: "Making history, geography, civics, and economics engaging and relevant.",
     },
     {
         icon: Laptop,
         title: "Computer Science",
-        description: "From programming fundamentals (Python, Java, C++) to complex algorithms, we prepare students for the digital future.",
+        description: "From programming fundamentals (Python, Java, C++) to complex algorithms.",
     },
     {
         icon: Briefcase,
         title: "Economics",
-        description: "Grasp the principles of micro and macroeconomics. We simplify complex theories and help students understand their real-world applications.",
+        description: "Grasp the principles of micro and macroeconomics and their real-world applications.",
     },
     {
         icon: BarChart2,
         title: "Accountancy",
-        description: "Build a strong foundation in financial accounting, corporate accounting, and bookkeeping with our expert commerce tutors.",
+        description: "Build a strong foundation in financial and corporate accounting with expert tutors.",
     }
 ];
 
@@ -128,28 +126,24 @@ export default function ServicesSection() {
           <div className="space-y-4 text-center">
               <h3 className="text-3xl font-bold tracking-tighter sm:text-4xl">Subjects We Cover</h3>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
-                  Click on a subject to learn more about our tailored curriculum.
+                  A glimpse into the wide range of subjects our expert tutors cover.
               </p>
           </div>
-          <Card className="mt-8">
-            <CardContent className="p-4 md:p-6">
-                <Accordion type="single" collapsible className="w-full">
-                {subjects.map((subject, index) => (
-                  <AccordionItem key={index} value={`item-${index}`}>
-                    <AccordionTrigger className="text-lg font-medium hover:no-underline">
-                        <div className="flex items-center gap-4">
-                            <subject.icon className="h-6 w-6 text-primary" />
-                            {subject.title}
-                        </div>
-                    </AccordionTrigger>
-                    <AccordionContent className="pl-14 text-base text-muted-foreground">
-                      {subject.description}
-                    </AccordionContent>
-                  </AccordionItem>
-                ))}
-              </Accordion>
-            </CardContent>
-          </Card>
+          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+            {subjects.map((subject, index) => (
+              <Card key={index} className="transform transition-transform hover:scale-105 hover:shadow-xl">
+                <CardHeader className="items-center text-center p-4">
+                    <div className="mb-3 rounded-full bg-primary/10 p-3">
+                        <subject.icon className="h-8 w-8 text-primary" />
+                    </div>
+                    <CardTitle className="text-lg">{subject.title}</CardTitle>
+                </CardHeader>
+                <CardContent className="p-4 pt-0">
+                    <p className="text-sm text-center text-muted-foreground">{subject.description}</p>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </div>
     </section>
