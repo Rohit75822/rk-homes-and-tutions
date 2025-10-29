@@ -6,7 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 import Image from 'next/image';
-import { Star, Book, User, Tv, Home } from 'lucide-react';
+import { Star, Book, User, Tv, Home, Search } from 'lucide-react';
 import { tutorsData, filterOptions, type Tutor } from '@/lib/tutors-data';
 import Link from 'next/link';
 
@@ -64,9 +64,19 @@ export default function FindTutorSection() {
     mode: 'All',
   });
   
-  const [filteredTutors, setFilteredTutors] = useState<Tutor[]>(tutorsData);
+  const [filteredTutors, setFilteredTutors] = useState<Tutor[]>([]);
+  const [hasFiltered, setHasFiltered] = useState(false);
 
   useEffect(() => {
+    const isAnyFilterSet = filters.class !== 'All' || filters.subject !== 'All' || filters.mode !== 'All';
+    
+    if (!isAnyFilterSet) {
+        setFilteredTutors([]);
+        setHasFiltered(false);
+        return;
+    }
+
+    setHasFiltered(true);
     let result = tutorsData;
 
     if (filters.class !== 'All') {
@@ -156,12 +166,20 @@ export default function FindTutorSection() {
           {/* Tutors List */}
           <div className="lg:col-span-1">
             <div className="grid grid-cols-1 gap-8">
-              {filteredTutors.length > 0 ? (
-                filteredTutors.map(tutor => <TutorCard key={tutor.id} tutor={tutor} />)
+              {hasFiltered ? (
+                filteredTutors.length > 0 ? (
+                  filteredTutors.map(tutor => <TutorCard key={tutor.id} tutor={tutor} />)
+                ) : (
+                  <div className="text-center py-16">
+                      <h3 className="text-2xl font-semibold">No Tutors Found</h3>
+                      <p className="text-muted-foreground mt-2">Try adjusting your filters to find more tutors.</p>
+                  </div>
+                )
               ) : (
-                <div className="text-center py-16">
-                    <h3 className="text-2xl font-semibold">No Tutors Found</h3>
-                    <p className="text-muted-foreground mt-2">Try adjusting your filters to find more tutors.</p>
+                <div className="text-center py-16 h-full flex flex-col justify-center items-center">
+                    <Search className="h-16 w-16 text-muted-foreground/50 mb-4" />
+                    <h3 className="text-2xl font-semibold">Select filters to find a tutor</h3>
+                    <p className="text-muted-foreground mt-2">Your perfect tutor is just a few clicks away.</p>
                 </div>
               )}
             </div>
