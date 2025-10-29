@@ -99,21 +99,21 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-3 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-12 grid grid-cols-3 gap-2 md:gap-6">
           {services.map((service, index) => (
             <Card key={index} className="flex flex-col transition-all hover:shadow-xl hover:-translate-y-1">
-              <CardHeader className="items-center text-center">
-                <div className="mb-4 rounded-full bg-primary/10 p-4">
-                  <service.icon className="h-10 w-10 text-primary" />
+              <CardHeader className="items-center text-center p-2 md:p-6">
+                <div className="mb-2 rounded-full bg-primary/10 p-2 md:p-4">
+                  <service.icon className="h-6 w-6 md:h-10 md:w-10 text-primary" />
                 </div>
-                <CardTitle className="text-2xl">{service.title}</CardTitle>
-                <CardDescription>{service.description}</CardDescription>
+                <CardTitle className="text-base md:text-2xl">{service.title}</CardTitle>
+                <CardDescription className="text-xs md:text-sm">{service.description}</CardDescription>
               </CardHeader>
-              <CardContent className="flex-grow">
-                <ul className="space-y-3">
+              <CardContent className="flex-grow p-2 md:p-6 pt-0">
+                <ul className="space-y-1 md:space-y-3 text-xs md:text-base">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-start gap-3">
-                      <Check className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
+                    <li key={i} className="flex items-start gap-2 md:gap-3">
+                      <Check className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
                       <span>{feature}</span>
                     </li>
                   ))}
