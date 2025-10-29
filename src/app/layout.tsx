@@ -7,7 +7,7 @@ import { cn } from '@/lib/utils';
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
 
 export const metadata: Metadata = {
-  title: 'RK Tutoring Hub',
+  title: 'Rk Home & Online tuitions',
   description: 'Welcome to Hyderabad\'s No.1 Home & Online Tuitions by RK Home & Online Tutors (Rooting Knowledge)',
 };
 

@@ -6,7 +6,7 @@ const testimonials = [
   {
     name: "Mrs. Priya Sharma",
     avatar: "PS",
-    comment: "RK Tutors has been a game-changer for my son's Mathematics grades. The personalized attention and expert guidance from his tutor made all the difference. We saw a 100% improvement within a month!",
+    comment: "Rk Home & Online tuitions has been a game-changer for my son's Mathematics grades. The personalized attention and expert guidance from his tutor made all the difference. We saw a 100% improvement within a month!",
   },
   {
     name: "Mr. Rajesh Kumar",
@@ -16,7 +16,7 @@ const testimonials = [
   {
     name: "Mrs. Anitha Reddy",
     avatar: "AR",
-    comment: "Thanks to RK Tutors, my son successfully cleared his JEE entrance exam. The exam preparation course was rigorous and very well-structured. The teachers are simply the best.",
+    comment: "Thanks to Rk Home & Online tuitions, my son successfully cleared his JEE entrance exam. The exam preparation course was rigorous and very well-structured. The teachers are simply the best.",
   },
 ];
 
