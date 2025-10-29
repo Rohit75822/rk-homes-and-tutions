@@ -13,6 +13,7 @@ const navLinks = [
   { href: '#about', label: 'About Us' },
   { href: '#services', label: 'Services' },
   { href: '#classes', label: 'Classes' },
+  { href: '#find-tutor', label: 'Find a Tutor' },
   { href: '#reviews', label: 'Reviews' },
   { href: '#contact', label: 'Contact' },
 ];
@@ -68,7 +69,7 @@ export default function Header() {
       { rootMargin: '-50% 0px -50% 0px' }
     );
 
-    const elements = navLinks.map(link => document.querySelector(link.href)).filter(el => el);
+    const elements = navLinks.map(link => document.querySelector(link.href.substring(1))).filter(el => el);
     elements.forEach((element) => {
       if(element) observer.observe(element);
     });
@@ -112,12 +113,9 @@ export default function Header() {
 
   useEffect(() => {
     updatePills();
-  }, [activeLink, hoveredLink, isMobileMenuOpen]);
-
-  useEffect(() => {
     window.addEventListener('resize', updatePills);
     return () => window.removeEventListener('resize', updatePills);
-  }, []);
+  }, [activeLink, hoveredLink, isMobileMenuOpen]);
 
 
   return (
@@ -159,6 +157,11 @@ export default function Header() {
               href={link.href}
               ref={el => linkRefs.current[index] = el}
               onMouseEnter={() => setHoveredLink(link.href)}
+              onClick={(e) => {
+                e.preventDefault();
+                document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
+                setActiveLink(link.href);
+              }}
               className={cn(
                 "relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors",
                 activeLink === link.href ? "text-white" : "text-gray-300 hover:text-white"
@@ -200,7 +203,14 @@ export default function Header() {
                     <Link
                       key={link.href}
                       href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(link.href);
+                        if (targetElement) {
+                          targetElement.scrollIntoView({ behavior: 'smooth' });
+                        }
+                        setIsMobileMenuOpen(false);
+                      }}
                       className={cn(
                         "rounded-md px-3 py-2 text-lg font-medium transition-colors",
                         activeLink === link.href ? 'bg-white/20 text-white' : 'text-gray-300 hover:bg-white/10'
