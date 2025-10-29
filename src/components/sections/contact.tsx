@@ -1,4 +1,5 @@
 
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Mail, MapPin } from "lucide-react";
 import TutoringForm from "../tutoring-form";
@@ -27,8 +28,8 @@ export default function ContactSection() {
         </div>
 
         <Card className="mt-16">
-          <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 text-center md:text-left">
-            <div className="flex flex-col items-center gap-2 md:flex-row">
+          <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 text-center">
+            <div className="flex flex-col items-center gap-2">
               <div className="rounded-full bg-primary/10 p-3">
                 <Phone className="h-6 w-6 text-primary" />
               </div>
@@ -37,7 +38,7 @@ export default function ContactSection() {
                 <a href="tel:+919494823941" className="text-muted-foreground hover:text-primary">+91 9494823941</a>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-2 md:flex-row">
+            <div className="flex flex-col items-center gap-2">
               <div className="rounded-full bg-primary/10 p-3">
                 <Mail className="h-6 w-6 text-primary" />
               </div>
@@ -46,7 +47,7 @@ export default function ContactSection() {
                 <a href="mailto:rkhometutions@gmail.com" className="text-muted-foreground hover:text-primary">rkhometutions@gmail.com</a>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-2 md:flex-row">
+            <div className="flex flex-col items-center gap-2">
               <div className="rounded-full bg-primary/10 p-3">
                 <MapPin className="h-6 w-6 text-primary" />
               </div>
