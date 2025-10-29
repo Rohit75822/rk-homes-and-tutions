@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
@@ -21,6 +21,14 @@ export default function Header() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeLink, setActiveLink] = useState('#home');
+  const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
+  const navRef = useRef<HTMLDivElement>(null);
+  const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
+
+  const [activePillStyle, setActivePillStyle] = useState({});
+  const [hoverPillStyle, setHoverPillStyle] = useState({});
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -46,13 +54,74 @@ export default function Header() {
     }
   }, [lastScrollY]);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveLink(`#${entry.target.id}`);
+          }
+        });
+      },
+      { rootMargin: '-50% 0px -50% 0px' }
+    );
+
+    navLinks.forEach((link) => {
+      const element = document.querySelector(link.href);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  const updatePills = () => {
+    if (!navRef.current) return;
+    const navRect = navRef.current.getBoundingClientRect();
+    
+    // Active Pill
+    const activeIndex = navLinks.findIndex(link => link.href === activeLink);
+    const activeLinkEl = linkRefs.current[activeIndex];
+    if (activeLinkEl) {
+      const { left, width } = activeLinkEl.getBoundingClientRect();
+      setActivePillStyle({
+        width: `${width}px`,
+        transform: `translateX(${left - navRect.left}px)`,
+      });
+    }
+
+    // Hover Pill
+    const hoverIndex = navLinks.findIndex(link => link.href === hoveredLink);
+    const hoverLinkEl = linkRefs.current[hoverIndex];
+    if (hoverLinkEl) {
+      const { left, width } = hoverLinkEl.getBoundingClientRect();
+      setHoverPillStyle({
+        width: `${width}px`,
+        transform: `translateX(${left - navRect.left}px)`,
+        opacity: 1,
+      });
+    } else {
+      setHoverPillStyle({ ...hoverPillStyle, opacity: 0 });
+    }
+  };
+
+  useEffect(() => {
+    updatePills();
+  }, [activeLink, hoveredLink, isMobileMenuOpen]);
+
+  useEffect(() => {
+    window.addEventListener('resize', updatePills);
+    return () => window.removeEventListener('resize', updatePills);
+  }, []);
+
 
   return (
     <header
       className={cn(
         'fixed top-0 z-50 w-full text-white transition-all duration-300',
         !isVisible && '-translate-y-full',
-        isScrolled && 'bg-black/80 shadow-md backdrop-blur-lg'
+        isScrolled ? 'bg-black/80 shadow-md backdrop-blur-lg' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
@@ -67,12 +136,29 @@ export default function Header() {
           <span className="text-xl font-bold">Rk Home & Online tuitions</span>
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
-          {navLinks.map((link) => (
+        <nav 
+          ref={navRef}
+          className="hidden items-center gap-2 md:flex relative rounded-full p-1 bg-black/30"
+          onMouseLeave={() => setHoveredLink(null)}
+        >
+          <div
+            className="absolute top-1 left-0 h-[calc(100%-0.5rem)] rounded-full bg-white/10 transition-all duration-300 ease-in-out"
+            style={hoverPillStyle}
+          />
+          <div
+            className="absolute top-1 left-0 h-[calc(100%-0.5rem)] rounded-full bg-white/20 shadow-md ring-1 ring-white/20 backdrop-blur-sm transition-all duration-300 ease-in-out"
+            style={activePillStyle}
+          />
+          {navLinks.map((link, index) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-lg font-bold transition-colors hover:text-gray-300"
+              ref={el => linkRefs.current[index] = el}
+              onMouseEnter={() => setHoveredLink(link.href)}
+              className={cn(
+                "relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors",
+                activeLink === link.href ? "text-white" : "text-gray-300 hover:text-white"
+              )}
             >
               {link.label}
             </Link>
@@ -105,13 +191,16 @@ export default function Header() {
                   />
                   <span className="text-xl font-bold">Rk Home & Online tuitions</span>
                 </Link>
-                <nav className="flex flex-col gap-6">
+                <nav className="flex flex-col gap-2">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-medium transition-colors hover:text-gray-300"
+                      className={cn(
+                        "rounded-md px-3 py-2 text-lg font-medium transition-colors",
+                        activeLink === link.href ? 'bg-white/20 text-white' : 'text-gray-300 hover:bg-white/10'
+                      )}
                     >
                       {link.label}
                     </Link>
