@@ -14,7 +14,7 @@ export default function HeroSection() {
           <p className="text-xl text-muted-foreground md:text-2xl">
             by RK Home & Online Tutors (Rooting Knowledge)
           </p>
-          <div className="flex flex-wrap justify-center gap-3 md:justify-start">
+          <div className="flex flex-wrap justify-center gap-3 md:justify-center">
             <Badge variant="secondary" className="gap-2 py-2 px-4 text-sm font-semibold text-secondary-foreground">
               <UsersRound className="h-5 w-5" />
               2500+ Expert Tutors
