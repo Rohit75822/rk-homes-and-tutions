@@ -1,6 +1,7 @@
 import { Card, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import Link from "next/link";
 import { classesData } from "@/lib/classes-data";
+import { cn } from "@/lib/utils";
 
 
 export default function ClassesSection() {
@@ -18,8 +19,11 @@ export default function ClassesSection() {
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {classesData.map((classItem) => (
-            <Link key={classItem.slug} href={`/classes/${classItem.slug}`}>
-              <Card className="flex h-full transform flex-col justify-center text-center transition-all hover:-translate-y-2 hover:border-primary hover:shadow-xl">
+            <Link key={classItem.slug} href={`/classes/${classItem.slug}`} className="group">
+              <Card className={cn(
+                "parallax-card flex h-full flex-col justify-center text-center transition-all",
+                "bg-card/90 backdrop-blur-sm"
+              )}>
                 <CardHeader className="items-center">
                   <div className="mb-4 rounded-full bg-primary/10 p-4">
                     <classItem.icon className="h-10 w-10 text-primary" />
