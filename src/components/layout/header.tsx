@@ -7,15 +7,17 @@ import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
+
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About Us' },
-  { href: '#services', label: 'Services' },
-  { href: '#classes', label: 'Classes' },
-  { href: '#find-tutor', label: 'Find a Tutor' },
-  { href: '#reviews', label: 'Reviews' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/', label: 'Home', sectionId: '#home' },
+  { href: '/#about', label: 'About Us', sectionId: '#about' },
+  { href: '/#services', label: 'Services', sectionId: '#services' },
+  { href: '/#classes', label: 'Classes', sectionId: '#classes' },
+  { href: '/#find-tutor', label: 'Find a Tutor', sectionId: '#find-tutor' },
+  { href: '/#reviews', label: 'Reviews', sectionId: '#reviews' },
+  { href: '/#contact', label: 'Contact', sectionId: '#contact' },
 ];
 
 export default function Header() {
@@ -25,6 +27,9 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeLink, setActiveLink] = useState('#home');
   const [hoveredLink, setHoveredLink] = useState<string | null>(null);
+
+  const pathname = usePathname();
+  const isHomePage = pathname === '/';
 
   const navRef = useRef<HTMLDivElement>(null);
   const linkRefs = useRef<(HTMLAnchorElement | null)[]>([]);
@@ -58,13 +63,13 @@ export default function Header() {
   }, [lastScrollY]);
 
   useEffect(() => {
+    if (!isHomePage) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
              const href = `#${entry.target.id}`;
-             // Check if the link exists in our navlinks to avoid setting active link for other sections
-             if (navLinks.some(link => link.href === href)) {
+             if (navLinks.some(link => link.sectionId === href)) {
                 setActiveLink(href);
              }
           }
@@ -74,7 +79,7 @@ export default function Header() {
     );
 
     const elements = navLinks
-        .map(link => document.querySelector(link.href))
+        .map(link => document.querySelector(link.sectionId))
         .filter(el => el) as Element[];
 
     elements.forEach((element) => {
@@ -86,14 +91,16 @@ export default function Header() {
             observer.unobserve(element);
         });
     };
-  }, []);
+  }, [isHomePage]);
 
   const updatePills = () => {
     if (!navRef.current) return;
     const navRect = navRef.current.getBoundingClientRect();
     
+    const activeSection = isHomePage ? activeLink : pathname;
+
     // Active Pill
-    const activeIndex = navLinks.findIndex(link => link.href === activeLink);
+    const activeIndex = navLinks.findIndex(link => (isHomePage ? link.sectionId === activeSection : link.href.startsWith(pathname.split('/')[1])));
     const activeLinkEl = linkRefs.current[activeIndex];
     if (activeLinkEl) {
       const { left, width } = activeLinkEl.getBoundingClientRect();
@@ -119,10 +126,19 @@ export default function Header() {
   };
 
   useEffect(() => {
+    if (isHomePage) {
+      setActiveLink('#home');
+    } else {
+      const currentLink = navLinks.find(link => link.href.startsWith(`/${pathname.split('/')[1]}`));
+      setActiveLink(currentLink?.sectionId || '');
+    }
+  }, [pathname, isHomePage]);
+
+  useEffect(() => {
     updatePills();
     window.addEventListener('resize', updatePills);
     return () => window.removeEventListener('resize', updatePills);
-  }, [activeLink, hoveredLink, isMobileMenuOpen]);
+  }, [activeLink, hoveredLink, isMobileMenuOpen, isHomePage]);
 
 
   return (
@@ -130,11 +146,11 @@ export default function Header() {
       className={cn(
         'fixed top-0 z-50 w-full text-white transition-all duration-300',
         !isVisible && '-translate-y-full',
-        isScrolled ? 'bg-black/80 shadow-md backdrop-blur-lg' : 'bg-transparent'
+        (isScrolled || !isHomePage) ? 'bg-black/80 shadow-md backdrop-blur-lg' : 'bg-transparent'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-3">
+        <Link href="/" className="flex items-center gap-3">
           <div className="relative h-10 w-10 flex-shrink-0">
             <Image
               src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
@@ -167,13 +183,15 @@ export default function Header() {
               ref={el => linkRefs.current[index] = el}
               onMouseEnter={() => setHoveredLink(link.href)}
               onClick={(e) => {
-                e.preventDefault();
-                document.querySelector(link.href)?.scrollIntoView({ behavior: 'smooth' });
-                setActiveLink(link.href);
+                if (isHomePage) {
+                  e.preventDefault();
+                  document.querySelector(link.sectionId)?.scrollIntoView({ behavior: 'smooth' });
+                  setActiveLink(link.sectionId);
+                }
               }}
               className={cn(
                 "relative z-10 rounded-full px-4 py-2 text-sm font-medium transition-colors",
-                activeLink === link.href ? "text-white" : "text-gray-300 hover:text-white"
+                activeLink === link.sectionId ? "text-white" : "text-gray-300 hover:text-white"
               )}
             >
               {link.label}
@@ -215,16 +233,18 @@ export default function Header() {
                       key={link.href}
                       href={link.href}
                       onClick={(e) => {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(link.href);
-                        if (targetElement) {
-                          targetElement.scrollIntoView({ behavior: 'smooth' });
-                        }
+                         if (isHomePage) {
+                            e.preventDefault();
+                            const targetElement = document.querySelector(link.sectionId);
+                            if (targetElement) {
+                                targetElement.scrollIntoView({ behavior: 'smooth' });
+                            }
+                         }
                         setIsMobileMenuOpen(false);
                       }}
                       className={cn(
                         "rounded-md px-3 py-2 text-lg font-medium transition-colors",
-                        activeLink === link.href ? 'bg-white/20 text-white' : 'text-gray-300 hover:bg-white/10'
+                        activeLink === link.sectionId ? 'bg-white/20 text-white' : 'text-gray-300 hover:bg-white/10'
                       )}
                     >
                       {link.label}
@@ -247,3 +267,5 @@ export default function Header() {
     </header>
   );
 }
+
+    
