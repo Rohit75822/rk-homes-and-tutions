@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full bg-black text-white transition-transform duration-300',
+        'sticky top-0 z-50 w-full bg-black/30 text-white backdrop-blur-lg transition-transform duration-300',
         !isVisible && '-translate-y-full'
       )}
     >
@@ -88,7 +88,7 @@ export default function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] bg-black text-white sm:w-[400px]">
+            <SheetContent side="right" className="w-[300px] border-l-0 bg-black/80 text-white backdrop-blur-lg sm:w-[400px]">
               <div className="flex h-full flex-col gap-8 p-6">
                 <Link href="#home" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image
