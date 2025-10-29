@@ -88,6 +88,7 @@ const subjects = [
 ];
 
 export default function ServicesSection() {
+    const duplicatedSubjects = [...subjects, ...subjects];
   return (
     <section id="services" className="w-full bg-background py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -121,31 +122,39 @@ export default function ServicesSection() {
             </Card>
           ))}
         </div>
+        </div>
 
-        <div className="mt-20">
-          <div className="space-y-4 text-center">
+        <div className="mt-20 w-full">
+          <div className="space-y-4 text-center container mx-auto px-4 md:px-6">
               <h3 className="text-3xl font-bold tracking-tighter sm:text-4xl">Subjects We Cover</h3>
               <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed">
                   A glimpse into the wide range of subjects our expert tutors cover.
               </p>
           </div>
-          <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-            {subjects.map((subject, index) => (
-              <Card key={index} className="transform transition-transform hover:scale-105 hover:shadow-xl">
-                <CardHeader className="items-center text-center p-4">
-                    <div className="mb-3 rounded-full bg-primary/10 p-3">
-                        <subject.icon className="h-8 w-8 text-primary" />
-                    </div>
-                    <CardTitle className="text-lg">{subject.title}</CardTitle>
-                </CardHeader>
-                <CardContent className="p-4 pt-0">
-                    <p className="text-sm text-center text-muted-foreground">{subject.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+            <div
+                className="relative mt-12 w-full overflow-hidden"
+                style={{
+                maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)',
+                }}
+            >
+                <div className="flex w-max animate-scroll [animation-duration:60s]">
+                    {duplicatedSubjects.map((subject, index) => (
+                    <Card key={index} className="w-[300px] shrink-0 mx-3 transform transition-transform hover:scale-105 hover:shadow-xl">
+                        <CardHeader className="items-center text-center p-4">
+                            <div className="mb-3 rounded-full bg-primary/10 p-3">
+                                <subject.icon className="h-8 w-8 text-primary" />
+                            </div>
+                            <CardTitle className="text-lg">{subject.title}</CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-4 pt-0">
+                            <p className="text-sm text-center text-muted-foreground h-20">{subject.description}</p>
+                        </CardContent>
+                    </Card>
+                    ))}
+                </div>
+            </div>
         </div>
-      </div>
     </section>
   );
 }
