@@ -121,9 +121,9 @@ export default function FindTutorSection() {
             </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+        <div className="grid grid-cols-2 gap-4 md:gap-12">
           {/* Filter Panel */}
-          <div className="lg:col-span-1">
+          <div className="col-span-1">
             <Card className="sticky top-24">
               <CardHeader>
                 <CardTitle>Filter Tutors</CardTitle>
@@ -163,7 +163,7 @@ export default function FindTutorSection() {
           </div>
 
           {/* Tutors List */}
-          <div className="lg:col-span-1">
+          <div className="col-span-1">
             <div className="grid grid-cols-1 gap-8">
               {hasFiltered ? (
                 filteredTutors.length > 0 ? (
