@@ -1,3 +1,22 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-tutoring-scene",
+      "description": "A vibrant scene of online tutoring with a student engaged in learning on a laptop.",
+      "imageUrl": "https://images.unsplash.com/photo-1701760171675-7d754bf45667?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8b25saW5lJTIwdHV0b3Jpbmd8ZW58MHx8fHwxNzYxNzYxNTEwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "online tutoring"
+    },
+    {
+      "id": "about-professional-tutor",
+      "description": "A professional and friendly tutor explaining a concept to a student.",
+      "imageUrl": "https://images.unsplash.com/photo-1747953273904-e46e522906c9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxwcm9mZXNzaW9uYWwlMjB0dXRvcnxlbnwwfHx8fDE3NjE3NjE1MTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "professional tutor"
+    },
+    {
+      "id": "testimonials-happy-students",
+      "description": "A group of happy and confident students.",
+      "imageUrl": "https://images.unsplash.com/photo-1560439450-57df7ac6dbef?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxoYXBweSUyMHN0dWRlbnRzfGVufDB8fHx8MTc2MTc1OTk0OHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "happy students"
+    }
+  ]
 }
