@@ -110,7 +110,7 @@ export default function FindTutorSection() {
   };
 
   return (
-    <section id="join-as-tutor" className="w-full py-16 md:py-24 bg-background">
+    <section id="find-tutor" className="w-full py-16 md:py-24 bg-background">
       <div className="container mx-auto px-4 md:px-6">
         <div className="text-center space-y-4 mb-12">
             <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">

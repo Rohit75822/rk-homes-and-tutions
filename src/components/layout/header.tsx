@@ -13,7 +13,7 @@ const navLinks = [
   { href: '#about', label: 'About Us' },
   { href: '#services', label: 'Services' },
   { href: '#classes', label: 'Classes' },
-  { href: '#join-as-tutor', label: 'Join as Tutor' },
+  { href: '#find-tutor', label: 'Find a Tutor' },
   { href: '#reviews', label: 'Reviews' },
   { href: '#contact', label: 'Contact' },
 ];

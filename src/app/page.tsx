@@ -3,7 +3,7 @@ import HeroSection from '@/components/sections/hero';
 import AboutSection from '@/components/sections/about';
 import ServicesSection from '@/components/sections/services';
 import ClassesSection from '@/components/sections/classes';
-import JoinAsTutorSection from '@/components/sections/join-as-tutor';
+import FindTutorSection from '@/components/sections/find-tutor';
 import ReviewsSection from '@/components/sections/reviews';
 import ContactSection from '@/components/sections/contact';
 import Footer from '@/components/layout/footer';
@@ -17,7 +17,7 @@ export default function Home() {
         <AboutSection />
         <ServicesSection />
         <ClassesSection />
-        <JoinAsTutorSection />
+        <FindTutorSection />
         <ReviewsSection />
         <ContactSection />
       </main>
