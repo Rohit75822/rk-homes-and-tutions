@@ -42,7 +42,7 @@ const subjects = [
 
 export default function ServicesSection() {
   return (
-    <section id="services" className="w-full bg-secondary/50 py-16 md:py-24">
+    <section id="services" className="w-full bg-background py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">Our Services & Courses</h2>
@@ -65,7 +65,7 @@ export default function ServicesSection() {
                 <ul className="space-y-3">
                   {service.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
-                      <Check className="mt-1 h-5 w-5 flex-shrink-0 text-accent" />
+                      <Check className="mt-1 h-5 w-5 flex-shrink-0 text-primary" />
                       <span>{feature}</span>
                     </li>
                   ))}

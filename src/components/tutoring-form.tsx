@@ -200,7 +200,7 @@ export default function TutoringForm({ formType, title, icon, buttonText, button
               size="lg"
               className={cn(
                 "w-full font-bold",
-                theme === 'primary' && 'bg-primary hover:bg-primary/90',
+                theme === 'primary' && 'bg-primary text-primary-foreground hover:bg-primary/90',
                 theme === 'accent' && 'bg-accent text-accent-foreground hover:bg-accent/90',
               )}
               disabled={isSubmitting}

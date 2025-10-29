@@ -1,7 +1,5 @@
-import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
 
 const testimonials = [
@@ -23,8 +21,6 @@ const testimonials = [
 ];
 
 export default function TestimonialsSection() {
-  const studentsImage = PlaceHolderImages.find(p => p.id === 'testimonials-happy-students');
-
   return (
     <section id="testimonials" className="w-full bg-background py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
@@ -56,18 +52,6 @@ export default function TestimonialsSection() {
               </div>
             </Card>
           ))}
-        </div>
-
-        <div className="relative mt-16 h-64 w-full rounded-lg shadow-lg md:h-80">
-          {studentsImage && (
-            <Image
-              src={studentsImage.imageUrl}
-              alt={studentsImage.description}
-              fill
-              className="rounded-lg object-cover"
-              data-ai-hint={studentsImage.imageHint}
-            />
-          )}
         </div>
       </div>
     </section>

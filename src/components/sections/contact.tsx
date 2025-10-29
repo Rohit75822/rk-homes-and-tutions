@@ -4,7 +4,7 @@ import TutoringForm from "../tutoring-form";
 
 export default function ContactSection() {
   return (
-    <section id="contact" className="w-full bg-secondary/50 py-16 md:py-24">
+    <section id="contact" className="w-full bg-secondary/30 py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <TutoringForm
@@ -18,7 +18,7 @@ export default function ContactSection() {
           <TutoringForm
             formType="register"
             title="Find Your Perfect Tutor"
-            icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0_0_24_24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 h-6 w-6 text-accent"><path d="M13.4 2H6.6l1.7 1.7L4 8l4 4.3.3-3.3 1.7-1.7 1.7 1.7-.3 3.3 4-4.3-4.3-4.3L13.4 2zM3.5 8.8 8 13.2l4.5-4.5"/><path d="m12 15 5 5m-5-5-5 5"/></svg>}
+            icon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0_0_24_24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="mr-2 h-6 w-6 text-primary"><path d="M13.4 2H6.6l1.7 1.7L4 8l4 4.3.3-3.3 1.7-1.7 1.7 1.7-.3 3.3 4-4.3-4.3-4.3L13.4 2zM3.5 8.8 8 13.2l4.5-4.5"/><path d="m12 15 5 5m-5-5-5 5"/></svg>}
             buttonText="Find My Perfect Tutor"
             buttonIcon={<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-5 w-5"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>}
             theme="accent"
