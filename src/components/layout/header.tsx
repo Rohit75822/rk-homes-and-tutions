@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, BookHeart } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
@@ -36,7 +37,13 @@ export default function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="#home" className="flex items-center gap-2">
-          <BookHeart className="h-8 w-8 text-primary" />
+          <Image
+            src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
+            alt="Rk Home & Online tuitions Logo"
+            width={40}
+            height={40}
+            className="rounded-full"
+          />
           <span className="text-xl font-bold">Rk Home & Online tuitions</span>
         </Link>
 
@@ -56,6 +63,9 @@ export default function Header() {
            <Button asChild className="hidden md:flex">
             <Link href="#contact">Book Free Demo</Link>
           </Button>
+           <Button asChild variant="outline" className="hidden md:flex">
+            <Link href="#contact">Join As Tutor</Link>
+          </Button>
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="md:hidden">
@@ -66,7 +76,13 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] sm:w-[400px]">
               <div className="flex flex-col gap-6 p-6">
                 <Link href="#home" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
-                  <BookHeart className="h-8 w-8 text-primary" />
+                  <Image
+                    src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
+                    alt="Rk Home & Online tuitions Logo"
+                    width={40}
+                    height={40}
+                    className="rounded-full"
+                  />
                   <span className="text-xl font-bold">Rk Home & Online tuitions</span>
                 </Link>
                 <nav className="flex flex-col gap-4">
@@ -83,6 +99,9 @@ export default function Header() {
                 </nav>
                  <Button asChild size="lg" onClick={() => setIsMobileMenuOpen(false)}>
                   <Link href="#contact">Book Free Demo Now</Link>
+                </Button>
+                 <Button asChild variant="outline" size="lg" onClick={() => setIsMobileMenuOpen(false)}>
+                  <Link href="#contact">Join As Tutor</Link>
                 </Button>
               </div>
             </SheetContent>
