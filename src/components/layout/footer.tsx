@@ -1,5 +1,6 @@
 import Link from 'next/link';
-import { BookHeart, Phone, Mail, MapPin } from 'lucide-react';
+import Image from 'next/image';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { Separator } from '../ui/separator';
 
 export default function Footer() {
@@ -8,9 +9,15 @@ export default function Footer() {
       <div className="container mx-auto px-4 py-12 md:px-6">
         <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-5">
           <div className="lg:col-span-2">
-            <Link href="#home" className="mb-4 inline-flex items-center gap-2">
-              <BookHeart className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold">RK Home & Online Tuitions</span>
+            <Link href="#home" className="mb-4 inline-flex items-center gap-3">
+              <Image
+                src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
+                alt="Rk Home & Online tuitions Logo"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
+              <span className="text-xl font-bold">RK Home & Online Tuitions</span>
             </Link>
             <p className="text-sm text-muted-foreground">
               by RK Home & Online Tutors (Rooting Knowledge)
