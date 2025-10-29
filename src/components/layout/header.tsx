@@ -75,7 +75,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-           <Button asChild className="hidden md:flex" variant="outline">
+           <Button asChild className="hidden bg-black text-white hover:bg-gray-800 md:flex" variant="outline">
             <Link href="#contact">Book Free Demo</Link>
           </Button>
            <Button asChild variant="secondary" className="hidden text-black md:flex">
@@ -113,7 +113,7 @@ export default function Header() {
                   ))}
                 </nav>
                  <div className="mt-auto flex flex-col gap-4">
-                   <Button asChild size="lg" variant="outline" onClick={() => setIsMobileMenuOpen(false)}>
+                   <Button asChild size="lg" variant="outline" className="bg-black text-white hover:bg-gray-800" onClick={() => setIsMobileMenuOpen(false)}>
                     <Link href="#contact">Book Free Demo</Link>
                   </Button>
                    <Button asChild variant="secondary" size="lg" className="text-black" onClick={() => setIsMobileMenuOpen(false)}>
