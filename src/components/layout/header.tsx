@@ -135,13 +135,15 @@ export default function Header() {
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
         <Link href="#home" className="flex items-center gap-3">
-          <Image
-            src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
-            alt="Rk Home & Online tuitions Logo"
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          <div className="relative h-10 w-10 flex-shrink-0">
+            <Image
+              src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
+              alt="Rk Home & Online tuitions Logo"
+              layout="fill"
+              objectFit="cover"
+              className="rounded-full"
+            />
+          </div>
           <span className="text-xl font-bold">Rk Home & Online tuitions</span>
         </Link>
 
@@ -196,13 +198,15 @@ export default function Header() {
             <SheetContent side="right" className="w-[300px] border-l-0 bg-black/80 text-white backdrop-blur-lg sm:w-[400px]">
               <div className="flex h-full flex-col gap-8 p-6">
                 <Link href="#home" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Image
-                    src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
-                    alt="Rk Home & Online tuitions Logo"
-                    width={40}
-                    height={40}
-                    className="rounded-full"
-                  />
+                  <div className="relative h-10 w-10 flex-shrink-0">
+                    <Image
+                      src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
+                      alt="Rk Home & Online tuitions Logo"
+                      layout="fill"
+                      objectFit="cover"
+                      className="rounded-full"
+                    />
+                  </div>
                   <span className="text-xl font-bold">Rk Home & Online tuitions</span>
                 </Link>
                 <nav className="flex flex-col gap-2">
