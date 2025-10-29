@@ -17,26 +17,41 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
+    const controlNavbar = () => {
+      if (typeof window !== 'undefined') {
+        if (window.scrollY > lastScrollY && window.scrollY > 80) { // if scroll down hide the navbar
+          setIsVisible(false);
+        } else { // if scroll up show the navbar
+          setIsVisible(true);
+        }
+        setLastScrollY(window.scrollY);
+      }
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('scroll', controlNavbar);
+
+      return () => {
+        window.removeEventListener('scroll', controlNavbar);
+      };
+    }
+  }, [lastScrollY]);
+
 
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled ? 'bg-background/80 shadow-md backdrop-blur-sm' : 'bg-transparent'
+        'sticky top-0 z-50 w-full bg-black text-white transition-transform duration-300',
+        !isVisible && '-translate-y-full'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
-        <Link href="#home" className="flex items-center gap-2">
+        <Link href="#home" className="flex items-center gap-3">
           <Image
             src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
             alt="Rk Home & Online tuitions Logo"
@@ -47,12 +62,12 @@ export default function Header() {
           <span className="text-xl font-bold">Rk Home & Online tuitions</span>
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-8 md:flex">
           {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium text-foreground/80 transition-colors hover:text-primary"
+              className="text-sm font-medium transition-colors hover:text-gray-300"
             >
               {link.label}
             </Link>
@@ -60,22 +75,22 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-4">
-           <Button asChild className="hidden md:flex">
+           <Button asChild className="hidden md:flex" variant="outline">
             <Link href="#contact">Book Free Demo</Link>
           </Button>
-           <Button asChild variant="outline" className="hidden md:flex">
+           <Button asChild variant="secondary" className="hidden text-black md:flex">
             <Link href="#contact">Join As Tutor</Link>
           </Button>
           <Sheet open={isMobileMenuOpen} onOpenChange={setIsMobileMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="md:hidden">
+              <Button variant="ghost" size="icon" className="md:hidden hover:bg-gray-800">
                 <Menu className="h-6 w-6" />
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <div className="flex flex-col gap-6 p-6">
-                <Link href="#home" className="flex items-center gap-2" onClick={() => setIsMobileMenuOpen(false)}>
+            <SheetContent side="right" className="w-[300px] bg-black text-white sm:w-[400px]">
+              <div className="flex h-full flex-col gap-8 p-6">
+                <Link href="#home" className="flex items-center gap-3" onClick={() => setIsMobileMenuOpen(false)}>
                   <Image
                     src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
                     alt="Rk Home & Online tuitions Logo"
@@ -85,24 +100,26 @@ export default function Header() {
                   />
                   <span className="text-xl font-bold">Rk Home & Online tuitions</span>
                 </Link>
-                <nav className="flex flex-col gap-4">
+                <nav className="flex flex-col gap-6">
                   {navLinks.map((link) => (
                     <Link
                       key={link.href}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="text-lg font-medium text-foreground/80 transition-colors hover:text-primary"
+                      className="text-lg font-medium transition-colors hover:text-gray-300"
                     >
                       {link.label}
                     </Link>
                   ))}
                 </nav>
-                 <Button asChild size="lg" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Link href="#contact">Book Free Demo Now</Link>
-                </Button>
-                 <Button asChild variant="outline" size="lg" onClick={() => setIsMobileMenuOpen(false)}>
-                  <Link href="#contact">Join As Tutor</Link>
-                </Button>
+                 <div className="mt-auto flex flex-col gap-4">
+                   <Button asChild size="lg" variant="outline" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link href="#contact">Book Free Demo</Link>
+                  </Button>
+                   <Button asChild variant="secondary" size="lg" className="text-black" onClick={() => setIsMobileMenuOpen(false)}>
+                    <Link href="#contact">Join As Tutor</Link>
+                  </Button>
+                </div>
               </div>
             </SheetContent>
           </Sheet>
