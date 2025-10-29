@@ -20,12 +20,16 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const controlNavbar = () => {
       if (typeof window !== 'undefined') {
+        setIsScrolled(window.scrollY > 10);
+        
         if (window.scrollY > lastScrollY && window.scrollY > 80) { // if scroll down hide the navbar
           setIsVisible(false);
+          setIsMobileMenuOpen(false); // Close mobile menu on scroll
         } else { // if scroll up show the navbar
           setIsVisible(true);
         }
@@ -46,8 +50,9 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'absolute top-0 z-50 w-full text-white transition-transform duration-300',
-        !isVisible && '-translate-y-full'
+        'fixed top-0 z-50 w-full text-white transition-all duration-300',
+        !isVisible && '-translate-y-full',
+        isScrolled && 'bg-black/80 shadow-md backdrop-blur-lg'
       )}
     >
       <div className="container mx-auto flex h-20 items-center justify-between px-4 md:px-6">
