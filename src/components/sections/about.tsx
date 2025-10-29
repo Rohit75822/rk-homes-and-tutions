@@ -1,6 +1,5 @@
-
 'use client'
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Users, HeartHandshake, BadgeCheck, Clock } from 'lucide-react';
 import Image from 'next/image';
 import { useInView } from 'react-intersection-observer';
@@ -16,7 +15,15 @@ const stats = [
 
 const carouselImages = [
     { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0058.jpg", alt: "Tutor helping a student", hint: "tutor student" },
-    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0057.jpg", alt: "Another tutoring session", hint: "learning environment" }
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0057.jpg", alt: "Another tutoring session", hint: "learning environment" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0051.jpg", alt: "Tutoring session", hint: "education learning" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0052.jpg", alt: "Tutoring session", hint: "education learning" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0053.jpg", alt: "Tutoring session", hint: "education learning" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0054.jpg", alt: "Tutoring session", hint: "education learning" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0055.jpg", alt: "Tutoring session", hint: "education learning" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0056.jpg", alt: "Tutoring session", hint: "education learning" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0060.jpg", alt: "Tutoring session", hint: "education learning" },
+    { src: "https://raw.githubusercontent.com/Rohit75822/rk-homes/main/IMG-20251028-WA0061.jpg", alt: "Tutoring session", hint: "education learning" },
 ]
 
 export default function AboutSection() {
