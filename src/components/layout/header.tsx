@@ -46,7 +46,7 @@ export default function Header() {
   return (
     <header
       className={cn(
-        'sticky top-0 z-50 w-full bg-black/20 text-white backdrop-blur-lg transition-transform duration-300',
+        'sticky top-0 z-50 w-full text-white transition-transform duration-300',
         !isVisible && '-translate-y-full'
       )}
     >
@@ -67,7 +67,7 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-sm font-medium transition-colors hover:text-gray-300"
+              className="text-base font-medium transition-colors hover:text-gray-300"
             >
               {link.label}
             </Link>
