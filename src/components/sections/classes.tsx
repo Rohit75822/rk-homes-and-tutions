@@ -22,7 +22,7 @@ export default function ClassesSection() {
             <Link key={classItem.slug} href={`/classes/${classItem.slug}`} className="group">
               <Card className={cn(
                 "parallax-card flex h-full flex-col justify-center text-center transition-all",
-                "bg-card/90 backdrop-blur-sm"
+                "bg-gradient-to-br from-card/90 to-background backdrop-blur-sm"
               )}>
                 <CardHeader className="items-center">
                   <div className="mb-4 rounded-full bg-primary/10 p-4">
