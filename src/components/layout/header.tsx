@@ -62,22 +62,29 @@ export default function Header() {
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            setActiveLink(`#${entry.target.id}`);
+             const href = `#${entry.target.id}`;
+             // Check if the link exists in our navlinks to avoid setting active link for other sections
+             if (navLinks.some(link => link.href === href)) {
+                setActiveLink(href);
+             }
           }
         });
       },
       { rootMargin: '-50% 0px -50% 0px' }
     );
 
-    const elements = navLinks.map(link => document.querySelector(link.href.substring(1))).filter(el => el);
+    const elements = navLinks
+        .map(link => document.querySelector(link.href))
+        .filter(el => el) as Element[];
+
     elements.forEach((element) => {
-      if(element) observer.observe(element);
+        observer.observe(element);
     });
 
     return () => {
-      elements.forEach((element) => {
-        if(element) observer.unobserve(element);
-      });
+        elements.forEach((element) => {
+            observer.unobserve(element);
+        });
     };
   }, []);
 
