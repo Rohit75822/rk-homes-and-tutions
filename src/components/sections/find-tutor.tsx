@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useMemo, useEffect } from 'react';
@@ -111,7 +112,7 @@ export default function FindTutorSection() {
             </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Filter Panel */}
           <div className="lg:col-span-1">
             <Card className="sticky top-24">
@@ -132,8 +133,10 @@ export default function FindTutorSection() {
                     <label className="text-sm font-medium">Subject</label>
                     <Select onValueChange={handleFilterChange('subject')} value={filters.subject}>
                         <SelectTrigger><SelectValue placeholder="Select Subject" /></SelectTrigger>
-                        <SelectContent>
-                        {availableSubjects.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                        <SelectContent className="max-h-[300px]">
+                            <div className="overflow-y-auto">
+                                {availableSubjects.map(s => <SelectItem key={s} value={s}>{s}</SelectItem>)}
+                            </div>
                         </SelectContent>
                     </Select>
                 </div>
@@ -151,12 +154,12 @@ export default function FindTutorSection() {
           </div>
 
           {/* Tutors List */}
-          <div className="lg:col-span-3">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="lg:col-span-1">
+            <div className="grid grid-cols-1 gap-8">
               {filteredTutors.length > 0 ? (
                 filteredTutors.map(tutor => <TutorCard key={tutor.id} tutor={tutor} />)
               ) : (
-                <div className="md:col-span-2 text-center py-16">
+                <div className="text-center py-16">
                     <h3 className="text-2xl font-semibold">No Tutors Found</h3>
                     <p className="text-muted-foreground mt-2">Try adjusting your filters to find more tutors.</p>
                 </div>
