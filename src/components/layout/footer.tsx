@@ -10,13 +10,15 @@ export default function Footer() {
         <div className="grid gap-8 md:grid-cols-4 lg:grid-cols-5">
           <div className="lg:col-span-2">
             <Link href="#home" className="mb-4 inline-flex items-center gap-3">
-              <Image
-                src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
-                alt="Rk Home & Online tuitions Logo"
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
+              <div className="relative h-10 w-10 flex-shrink-0">
+                <Image
+                  src="https://raw.githubusercontent.com/Rohit75822/rk-homes/main/logo-i1RTvjfS.jpg"
+                  alt="Rk Home & Online tuitions Logo"
+                  layout="fill"
+                  objectFit="cover"
+                  className="rounded-full"
+                />
+              </div>
               <span className="text-xl font-bold">RK Home & Online Tuitions</span>
             </Link>
             <p className="text-sm text-muted-foreground">
