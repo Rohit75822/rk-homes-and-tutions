@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from "@/components/ui/card";
 import { Phone, Mail, MapPin } from "lucide-react";
 import TutoringForm from "../tutoring-form";
@@ -26,7 +27,7 @@ export default function ContactSection() {
         </div>
 
         <Card className="mt-16">
-          <CardContent className="grid grid-cols-1 gap-6 p-6 text-center md:grid-cols-3 md:text-left">
+          <CardContent className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6 text-center md:text-left">
             <div className="flex flex-col items-center gap-2 md:flex-row">
               <div className="rounded-full bg-primary/10 p-3">
                 <Phone className="h-6 w-6 text-primary" />
