@@ -3,8 +3,7 @@
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { useFormState } from 'react-dom';
-import { useEffect, useRef } from 'react';
+import { useActionState, useEffect, useRef } from 'react';
 
 import { Button } from '@/components/ui/button';
 import {
@@ -52,7 +51,7 @@ export default function TutoringForm({ formType, title, icon, buttonText, button
   const formRef = useRef<HTMLFormElement>(null);
   
   const initialState: FormState = { message: '', status: 'idle' };
-  const [state, formAction] = useFormState(submitForm, initialState);
+  const [state, formAction, isSubmitting] = useActionState(submitForm, initialState);
 
   const form = useForm<TutoringFormValues>({
     resolver: zodResolver(formSchema),
@@ -63,8 +62,6 @@ export default function TutoringForm({ formType, title, icon, buttonText, button
       message: '',
     },
   });
-
-  const { formState: { isSubmitting } } = form;
 
   useEffect(() => {
     if (state.status === 'success') {
