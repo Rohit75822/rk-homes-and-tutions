@@ -2,7 +2,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Star } from 'lucide-react';
 
-const testimonials = [
+const reviews = [
   {
     name: "Mrs. Priya Sharma",
     avatar: "PS",
@@ -20,9 +20,9 @@ const testimonials = [
   },
 ];
 
-export default function TestimonialsSection() {
+export default function ReviewsSection() {
   return (
-    <section id="testimonials" className="w-full bg-background py-16 md:py-24">
+    <section id="reviews" className="w-full bg-background py-16 md:py-24">
       <div className="container mx-auto px-4 md:px-6">
         <div className="space-y-4 text-center">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">What Parents Say</h2>
@@ -32,7 +32,7 @@ export default function TestimonialsSection() {
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {testimonials.map((testimonial, index) => (
+          {reviews.map((review, index) => (
             <Card key={index} className="flex flex-col justify-between transition-all hover:shadow-xl hover:-translate-y-1">
               <CardContent className="p-6">
                 <div className="mb-4 flex items-center gap-1">
@@ -40,14 +40,14 @@ export default function TestimonialsSection() {
                     <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-muted-foreground italic">"{testimonial.comment}"</p>
+                <p className="text-muted-foreground italic">"{review.comment}"</p>
               </CardContent>
               <div className="flex items-center gap-4 border-t bg-secondary/30 p-4">
                 <Avatar>
-                  <AvatarFallback>{testimonial.avatar}</AvatarFallback>
+                  <AvatarFallback>{review.avatar}</AvatarFallback>
                 </Avatar>
                 <div>
-                  <p className="font-semibold">{testimonial.name}</p>
+                  <p className="font-semibold">{review.name}</p>
                 </div>
               </div>
             </Card>
